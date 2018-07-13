@@ -27,6 +27,8 @@ script:
   - 'npm test'
   - 'npm run frisby'
   - 'NODE_ENV=ctf npm run protractor'
+after_success:
+- bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --blackduck.hub.url="https://hubeval32.blackducksoftware.com" --blackduck.hub.username="ntu" --blackduck.hub.password="ntu@2018" --blackduck.hub.trust.cert=true --detect.policy.check=true
 
 notifications:
   email:
@@ -72,6 +74,4 @@ deploy:
     repo: bkimminich/juice-shop
     tags: true
     
- after_success:
-- bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --blackduck.hub.url="https://hubeval32.blackducksoftware.com" --blackduck.hub.username="ntu" --blackduck.hub.password="ntu@2018" --blackduck.hub.trust.cert=true --detect.policy.check=true
 
