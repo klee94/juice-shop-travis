@@ -28,8 +28,8 @@ script:
   - 'npm run frisby'
   - 'NODE_ENV=ctf npm run protractor'
 after_success:
-  - './node_modules/.bin/lcov-result-merger ''build/reports/coverage/*/lcov.info'' ''build/reports/coverage/lcov_merged.info'''
-  - './node_modules/.bin/codeclimate-test-reporter < ./build/reports/coverage/lcov_merged.info'
+- bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --blackduck.hub.url="https://hubeval32.blackducksoftware.com" --blackduck.hub.username="ntu" --blackduck.hub.password="ntu@2018" --blackduck.hub.trust.cert=true --detect.policy.check=true
+
 notifications:
   email:
     - secure: ADLqaNm7lR8sgCkSz7eWtWdm8zZ9OsbkcQAi2nm7hQPWAkTWPfr9qeOBh39Z3PZvkgDdlUpNZc/uPlcEGEILznJRF3HlQjWrWksNNtY3xaRc01B4uXlDbODjttb6v9mOqkwUqRfQLeerOqNynNSkT129+mz4FANn0+oucZ3EuQc=
@@ -74,5 +74,4 @@ deploy:
     repo: bkimminich/juice-shop
     tags: true
     
-    after_success:
-- bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --blackduck.hub.url="https://hubeval32.blackducksoftware.com" --blackduck.hub.username="ntu" --blackduck.hub.password="ntu@2018" --blackduck.hub.trust.cert=true --detect.policy.check=true
+    
